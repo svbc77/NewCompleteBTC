@@ -1,0 +1,6 @@
+dash
+plotly
+pandas
+prophet
+gunicorn
+requests
