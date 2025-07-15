@@ -16,7 +16,8 @@ def fetch_coinmetrics():
         "format": "csv"
     }
     r = requests.get(url, params=params)
-    df = pd.read_csv(pd.compat.StringIO(r.text))
+    from io import StringIO
+df = pd.read_csv(StringIO(r.text))
     df['date'] = pd.to_datetime(df['time'], utc=True)
     df['mvrv'] = df['CapMrktCurUSD'] / df['CapRealUSD']
     df = df.rename(columns={
