@@ -19,8 +19,8 @@ def fetch_coinmetrics():
     from io import StringIO
 df = pd.read_csv(StringIO(r.text))
 df['date'] = pd.to_datetime(df['time'], utc=True)
-    df['mvrv'] = df['CapMrktCurUSD'] / df['CapRealUSD']
-    df = df.rename(columns={
+df['mvrv'] = df['CapMrktCurUSD'] / df['CapRealUSD']
+df = df.rename(columns={
         "PriceUSD": "price",
         "AdrActCnt": "active_addresses",
         "TxCnt": "tx_count",
